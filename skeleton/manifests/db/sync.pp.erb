@@ -1,0 +1,14 @@
+#
+# Class to execute "<%= metadata.name %>-manage db_sync
+#
+class <%= metadata.name %>::db::sync {
+  exec { '<%= metadata.name %>-manage db_sync':
+    path        => '/usr/bin',
+    user        => '<%= metadata.name %>',
+    refreshonly => true,
+    subscribe   => [Package['<%= metadata.name %>'], <%= metadata.name %>_config['database/connection']],
+    require     => User['<%= metadata.name %>'],
+  }
+
+  Exec['<%= metadata.name %>-manage db_sync'] ~> Service<| title == '<%= metadata.name %>' |>
+}
