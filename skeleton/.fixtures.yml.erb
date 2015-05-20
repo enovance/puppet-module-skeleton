@@ -1,0 +1,6 @@
+fixtures:
+  repositories:
+    'stdlib': 'https://github.com/puppetlabs/puppetlabs-stdlib.git'
+    'openstacklib': 'git://github.com/stackforge/puppet-openstacklib.git'
+  symlinks:
+    <%= metadata.name %>: "#{source_dir}"
