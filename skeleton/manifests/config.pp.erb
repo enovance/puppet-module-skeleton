@@ -1,0 +1,30 @@
+# == Class: <%= metadata.name %>::config
+#
+# This class is used to manage arbitrary <%= metadata.name %> configurations.
+#
+# === Parameters
+#
+# [*<%= metadata.name %>_config*]
+#   (optional) Allow configuration of arbitrary <%= metadata.name %> configurations.
+#   The value is an hash of <%= metadata.name %>_config resources. Example:
+#   { 'DEFAULT/foo' => { value => 'fooValue'},
+#     'DEFAULT/bar' => { value => 'barValue'}
+#   }
+#   In yaml format, Example:
+#   <%= metadata.name %>_config:
+#     DEFAULT/foo:
+#       value: fooValue
+#     DEFAULT/bar:
+#       value: barValue
+#
+#   NOTE: The configuration MUST NOT be already handled by this module
+#   or Puppet catalog compilation will fail with duplicate resources.
+#
+class <%= metadata.name %>::config (
+  $<%= metadata.name %>_config  = {},
+) {
+
+  validate_hash($<%= metadata.name %>_config)
+
+  create_resources('<%= metadata.name %>_config', $<%= metadata.name %>_config)
+}
