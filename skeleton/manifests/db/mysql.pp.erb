@@ -34,22 +34,14 @@
 #   Only used with mysql modules >= 2.2.
 #   Defaults to 'utf8_general_ci'
 #
-# === Deprecated Parameters
-#
-# [*mysql_module*]
-#   (Optional) Does nothing.
-#
 # == Dependencies
 #   Class['mysql::server']
 #
 # == Examples
+#
 # == Authors
 #
-#   Dan Bode dan@puppetlabs.com
-#
 # == Copyright
-#
-# Copyright 2012 Puppetlabs Inc, unless otherwise noted.
 #
 class <%= metadata.name %>::db::mysql(
   $password,
@@ -58,13 +50,8 @@ class <%= metadata.name %>::db::mysql(
   $host          = '127.0.0.1',
   $charset       = 'utf8',
   $collate       = 'utf8_general_ci',
-  $mysql_module  = undef,
   $allowed_hosts = undef
 ) {
-
-  if $mysql_module {
-    warning('The mysql_module parameter is deprecated. The latest 2.x mysql module will be used.')
-  }
 
   validate_string($password)
 
