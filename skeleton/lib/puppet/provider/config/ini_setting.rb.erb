@@ -16,7 +16,7 @@ Puppet::Type.type(:<%= metadata.name %>_config).provide(
   end
 
   def self.file_path
-    '/etc/<%= meatadata.name %>/<%= metadata.name %>.conf'
+    '/etc/<%= metadata.name %>/<%= metadata.name %>.conf'
   end
 
   # added for backwards compatibility with older versions of inifile
